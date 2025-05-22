@@ -27,7 +27,7 @@ a {
   top: 0;
   width: 100%;
   z-index: 15;
-
+overflow-x: scroll;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -35,6 +35,9 @@ a {
   background-color: rgba(255, 255, 255, 0.678);
   backdrop-filter: blur(30px); /* blur the background */
   -webkit-backdrop-filter: blur(10px); /* for Safari */
+}
+.header::-webkit-scrollbar{
+  display: none;
 }
 
 .header-left {

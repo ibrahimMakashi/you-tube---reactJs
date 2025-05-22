@@ -4,7 +4,7 @@ const SearchPageCard = ({ info }) => {
   const { snippet } = info;
   const { title, channelTitle, thumbnails } = snippet;
   return (
-    <div className="video-card flex search-video-card">
+    <div className="flex search-video-card">
       <img
         className="search-video-thunb"
         src={thumbnails?.medium?.url}
@@ -12,7 +12,7 @@ const SearchPageCard = ({ info }) => {
       />
       <div className="search-card-right">
         <div>
-          <h4 className="">{title}</h4>
+          <h4>{title}</h4>
           <p>{channelTitle}</p>
         </div>
         <img

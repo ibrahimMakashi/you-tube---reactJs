@@ -1,0 +1,39 @@
+@media (max-width: 800px) {
+  .video-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .header-right img:first-child {
+   display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .search-page-container {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .search-video-card {
+    flex-direction: column;
+    width: 100%;
+    padding-right: 0;
+    align-items: stretch;
+    padding-inline: 5px;
+  }
+
+  .search-video-thunb {
+    width: 90%;
+  }
+
+  .search-card-right {
+    width: 90%;
+  }
+}
+
+@media (max-width: 545px) {
+  .video-container {
+    grid-template-columns: 1fr;
+  }
+}

@@ -181,7 +181,6 @@ a {
   height: 50px;
   position: fixed;
   top: 57px;
-
   background-color: rgba(255, 255, 255, 0.678);
   backdrop-filter: blur(30px); /* blur the background */
   -webkit-backdrop-filter: blur(30px); /* for Safari */
@@ -489,27 +488,30 @@ a {
 /* search-page */
 
 .search-page-container {
+  
   margin-top: 80px;
   flex-direction: column;
   align-items: flex-start;
+  row-gap: 10px;
 }
 
 .search-video-card {
-  width: 80%;
+  width: 100%;
+  padding-right: 10px;
   column-gap: 20px;
   margin-left: 20px;
 }
 
 .search-video-thunb {
-  flex-basis: 30%;
+  /* flex-basis: 30%; */
+  border-radius: 20px;
+  width: 300px;
 }
 
 .search-card-right {
   align-self: flex-start;
-  flex-basis: 60%;
   row-gap: 10px;
   padding-top: 5px;
-  /* align-items: flex-start; */
 }
 
 .search-card-right h4 {
@@ -519,7 +521,6 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal;
-  width: 100%;
 }
 
 .search-card-right p {

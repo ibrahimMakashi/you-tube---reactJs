@@ -2,6 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import "./Media.css";
 import Header from "./components/Header";
 import SideBar from "./components/SideBar";
 import { Provider } from "react-redux";
@@ -14,7 +15,7 @@ function App() {
     <Provider store={store}>
       <Header />
       <SideBar />
-      <Outlet/>
+      <Outlet />
     </Provider>
   );
 }

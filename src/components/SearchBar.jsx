@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addSearchSuggetion, addToCache } from "../utils/searchSlice";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [isSuggetion, setIsSuggetion] = useState(false);
+
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const cache = useSelector((store) => store.search.searchCache);
   const searchSuggetion = useSelector((store) => store.search.searchSuggetion);
@@ -35,6 +38,16 @@ const SearchBar = () => {
     };
   }, [query]);
 
+  useEffect(()=>{
+    if(location.pathname === '/'){
+      setQuery('')
+    }
+  }, [location.pathname])
+
+  const handleQuery = ()=>{
+    navigate('/search/'+query)
+  }
+
   return (
     <div className="search-bar">
       <input
@@ -47,9 +60,9 @@ const SearchBar = () => {
           setIsSuggetion(false)
         }, 100)}
       />
-      <img
+      <img onClick={() => handleQuery()}
         src="https://www.pngplay.com/wp-content/uploads/15/Magnifying-Glass-Icon-PNG-HD-Quality.png"
-        alt=""
+        alt="search"
       />
       {query && (
         <div

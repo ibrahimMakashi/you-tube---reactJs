@@ -116,4 +116,12 @@
   .related-video-card img{
     width: 400px
   }
+
+  .search-bar input{
+    width: 80px;
+  }
+
+  .header{
+    padding: 10px 2px;
+  }
 }

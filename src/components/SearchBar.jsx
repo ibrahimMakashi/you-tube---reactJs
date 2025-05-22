@@ -17,7 +17,7 @@ const SearchBar = () => {
 
   const fetchSuggetion = async () => {
     const res = await fetch(
-      `http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${query}`
+      `https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${query}`
     );
     const data = await res.json();
     dispatch(addToCache({ [query]: data[1] }));

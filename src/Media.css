@@ -20,18 +20,23 @@
   }
 
   .watch-container {
-  padding: 10px;
-  padding-top: 85px;
-  align-items: start;
-  column-gap: 20px;
-  flex-direction: column;
-}
+    padding: 10px;
+    padding-top: 85px;
+    align-items: start;
+    column-gap: 20px;
+    flex-direction: column;
+  }
 
-.watch-left {
-  width: 100%;
-  flex-direction: column;
-  padding-inline: 50px;
-}
+  .watch-left {
+    width: 100%;
+    flex-direction: column;
+    padding-inline: 50px;
+  }
+
+  .watch-right {
+    width: 100%;
+    padding: 10px;
+  }
 }
 
 @media (max-width: 650px) {
@@ -56,10 +61,59 @@
   .search-card-right {
     width: 90%;
   }
+
+  .side-bar {
+    display: none;
+  }
+
+  .menu-logo {
+    display: none;
+  }
+  .body-container {
+    margin-left: 0px !important;
+  }
+
+  .watch-container {
+    margin-left: 0px !important;
+  }
+
+  .search-page-container {
+    margin-left: 0px !important;
+  }
+
+  .sort-right-btn {
+    right: 0 !important;
+  }
 }
 
 @media (max-width: 545px) {
   .video-container {
     grid-template-columns: 1fr;
+  }
+
+  .watch-left iframe {
+    width: 100%;
+    max-width: 750px;
+    height: 220px;
+    border-radius: 20px;
+  }
+
+  .watch-right {
+    flex-basis: 100%;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .related-video-card {
+    width: 100%;
+    padding-right: 0;
+    align-items: stretch;
+    padding-inline: 5px;
+  }
+
+
+  .related-video-card img{
+    width: 400px
   }
 }

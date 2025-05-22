@@ -64,7 +64,7 @@ const Watch = () => {
 
   useEffect(() => {
     if (videoData?.snippet?.title) {
-      // fetchRelatedVideos();
+      fetchRelatedVideos();
     }
   }, [videoData]);
 
@@ -181,8 +181,7 @@ const Watch = () => {
         )}
       </div>
       <div className="watch-right">
-        {}
-        {isrelatedLoading ? (
+        {!isrelatedLoading ? (
           relatedVideos.map((item) => (
             <Link to={"/watch/" + item.id.videoId} key={item.id.videoId}>
               <RelatedVideoCard data={item} />

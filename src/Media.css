@@ -29,9 +29,9 @@
   }
 
   .watch-left {
-    width: 100%;
+    width: 100vw;
     flex-direction: column;
-    /* padding-inline: 50px; */
+    padding-inline: 5px;
   }
 
   .watch-right {
@@ -103,6 +103,16 @@
     overflow: hidden;
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .channel{
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+  }
+
+  .channel div:nth-child(2){
+  gap: 20px;
   }
 
   .related-video-card {

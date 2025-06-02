@@ -50,6 +50,7 @@ const Watch = () => {
       );
       const data = await res.json();
       setRelatedVideos(data?.items);
+     
     } catch (error) {
       console.error("Related videos error:", error);
     } finally {
@@ -125,26 +126,28 @@ const Watch = () => {
                 />
                 <h4>{snippet?.channelTitle}</h4>
               </div>
-              <div className="subscrib flex curser">
-                <img
-                  src="https://p7.hiclipart.com/preview/695/159/582/computer-icons-button-clip-art-alarm-bell.jpg"
-                  alt=""
-                />
-                <p>Subscrib</p>
-              </div>
-              <div className="like flex curser">
-                <img
-                  src="https://static-00.iconduck.com/assets.00/like-icon-2048x1982-ihumn0em.png"
-                  alt=""
-                />
-                <p>{formatNumberUS(statistics?.likeCount)}</p>
-              </div>
-              <div className="share flex curser">
-                <img
-                  src="https://i.pinimg.com/736x/9d/7d/7c/9d7d7c20cd2f6b573c90f2fb88da424a.jpg"
-                  alt=""
-                />
-                <p>Share</p>
+              <div className="flex">
+                <div className="subscrib flex curser">
+                  <img
+                    src="https://p7.hiclipart.com/preview/695/159/582/computer-icons-button-clip-art-alarm-bell.jpg"
+                    alt=""
+                  />
+                  <p>Subscrib</p>
+                </div>
+                <div className="like flex curser">
+                  <img
+                    src="https://static-00.iconduck.com/assets.00/like-icon-2048x1982-ihumn0em.png"
+                    alt=""
+                  />
+                  <p>{formatNumberUS(statistics?.likeCount)}</p>
+                </div>
+                <div className="share flex curser">
+                  <img
+                    src="https://i.pinimg.com/736x/9d/7d/7c/9d7d7c20cd2f6b573c90f2fb88da424a.jpg"
+                    alt=""
+                  />
+                  <p>Share</p>
+                </div>
               </div>
             </div>
             <div className="discription">

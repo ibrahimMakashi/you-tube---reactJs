@@ -6,9 +6,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [isSuggetion, setIsSuggetion] = useState(false);
+  const [error, setError] = useState("");
 
-  const navigate = useNavigate()
-  const location = useLocation()
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const cache = useSelector((store) => store.search.searchCache);
   const searchSuggetion = useSelector((store) => store.search.searchSuggetion);
@@ -16,12 +17,17 @@ const SearchBar = () => {
   const dispatch = useDispatch();
 
   const fetchSuggetion = async () => {
-    const res = await fetch(
-      `https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${query}`
-    );
-    const data = await res.json();
-    dispatch(addToCache({ [query]: data[1] }));
-    dispatch(addSearchSuggetion(data[1]));
+    try {
+      const res = await fetch(
+        `https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${query}`
+      );
+      const data = await res.json();
+      dispatch(addToCache({ [query]: data[1] }));
+      dispatch(addSearchSuggetion(data[1]));
+      setError('')
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   useEffect(() => {
@@ -38,15 +44,15 @@ const SearchBar = () => {
     };
   }, [query]);
 
-  useEffect(()=>{
-    if(location.pathname === '/'){
-      setQuery('')
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setQuery("");
     }
-  }, [location.pathname])
+  }, [location.pathname]);
 
-  const handleQuery = ()=>{
-    navigate('/search/'+query)
-  }
+  const handleQuery = () => {
+    navigate("/search/" + query);
+  };
 
   return (
     <div className="search-bar">
@@ -56,11 +62,14 @@ const SearchBar = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onFocus={() => setIsSuggetion(true)}
-        onBlur={() => setTimeout(() => {
-          setIsSuggetion(false)
-        }, 100)}
+        onBlur={() =>
+          setTimeout(() => {
+            setIsSuggetion(false);
+          }, 100)
+        }
       />
-      <img onClick={() => handleQuery()}
+      <img
+        onClick={() => handleQuery()}
         src="https://www.pngplay.com/wp-content/uploads/15/Magnifying-Glass-Icon-PNG-HD-Quality.png"
         alt="search"
       />
@@ -69,18 +78,24 @@ const SearchBar = () => {
           className="search-suggetion"
           style={{ display: isSuggetion ? "block" : "none" }}
         >
-          {searchSuggetion &&
-            searchSuggetion.map((search, i) => (
-              <Link key={i} to={"/search/" + search}>
-                <p className="curser" onClick={()=>setQuery(search)}>
-                  <img
-                    src="https://www.pngplay.com/wp-content/uploads/15/Magnifying-Glass-Icon-PNG-HD-Quality.png"
-                    alt=""
-                  />
-                  {search}
-                </p>
-              </Link>
-            ))}
+          {error ? (
+            <div>Please use CORS crome extention for suggetion</div>
+          ) : (
+            <div>
+              {searchSuggetion &&
+                searchSuggetion.map((search, i) => (
+                  <Link key={i} to={"/search/" + search}>
+                    <p className="curser" onClick={() => setQuery(search)}>
+                      <img
+                        src="https://www.pngplay.com/wp-content/uploads/15/Magnifying-Glass-Icon-PNG-HD-Quality.png"
+                        alt=""
+                      />
+                      {search}
+                    </p>
+                  </Link>
+                ))}
+            </div>
+          )}
         </div>
       )}
     </div>
